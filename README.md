@@ -1,0 +1,1 @@
+This is an application that grabs gifs from the giphy api and appends to the dom

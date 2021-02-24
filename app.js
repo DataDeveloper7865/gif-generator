@@ -1,57 +1,44 @@
-console.log("Let's get this party started!");
 
-//function to grab the form input value
 
-let $gifToAppend = $('#input1').val()
-//take the input value to make the network request
-
+//handle submit event - add event listener
 $("form").on("submit", function (evt) {
     evt.preventDefault();
     makeAJAXRequest();
-    //appendToGallery(gifToAppend);
 })
 
+//handle remove button event - add event listener
 $("#remove-images").on("click", function () {
     deleteAllGifs();
 })
 
+//function to remove all gif's on element with jQuery
+function deleteAllGifs() {
+    $(".gif-gallery").empty();
+}
+
+//make network request
 async function makeAJAXRequest() {
+    //grab value from input
     let gifToAppend = $("#input1").val()
-    console.log(gifToAppend);
+
+    //make network request and store response object
     let response = await axios.get(
         `http://api.giphy.com/v1/gifs/search?q=${gifToAppend}&api_key=MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym`
     )
 
+    //number of elements needed to grab random .gif
     let numElements = response.data.data.length;
 
+    //random number at ith index of response
     let randomNum = Math.floor(Math.random() * numElements)
-    console.log("Returned response: ", response.data.data[randomNum].images.original.url);
     
+    //add image with jQuery
     let image = $('<img id="dynamic">');
     image.attr('src', response.data.data[randomNum].images.original.url);
     image.attr('width', '200px');
     image.attr('height', '200px');
     $('.gif-gallery').append(image);
 
-
+    //return the responded object
     return response.data.data[randomNum].images.original.url;
-}
-
-// function appendToGallery(gif) {
-//     console.log(gif.url);
-//     let image = $('<img id="dynamic">');
-//     image.attr('src', gif.url);
-//     $('.gif-gallery').append(image);
-
-//     // var img = $('<img id="dynamic">'); //Equivalent: $(document.createElement('img'))
-//     // img.attr('src', responseObject.imgurl);
-//     // img.appendTo('#imagediv');
-// }
-//using jquery put into the document
-
-
-//delete button clears all gifs
-
-function deleteAllGifs() {
-    $(".gif-gallery").empty();
 }

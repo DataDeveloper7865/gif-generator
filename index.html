@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Giphy Party!</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <h1>GIPHY PARTY</h1>
+
+  <form action="submit">
+    <label for="input1"></label>
+    <input id="input1" type="text" for="input1" placeholder="Enter a search term">
+    <!-- <button onclick="makeAJAXRequest()" class="btn btn-primary" id="search-button"> Search Giphy!</button> -->
+    <button class="btn btn-primary" id="search-button"> Search Giphy!</button>
+  </form>
+
+  <button class="btn btn-danger" id="remove-images"> Remove Images! </button>
+  <div class="gif-gallery"> 
+
+    <h1>something to be deleted</h1>
+  </div>
+
+
+
+<script src="https://unpkg.com/jquery"></script>
+<script src="https://unpkg.com/axios/dist/axios.js"></script>
+<script src="app.js"></script>
+</body>
+
+</html>

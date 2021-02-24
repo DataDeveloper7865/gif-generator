@@ -21,14 +21,14 @@ async function makeAJAXRequest() {
     let response = await axios.get(
         `http://api.giphy.com/v1/gifs/search?q=${gifToAppend}&api_key=MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym`
     )
-    console.log("Returned response: ", response.data.data[0]);
+    console.log("Returned response: ", response.data.data[0].images.original.url);
     
     let image = $('<img id="dynamic">');
-    image.attr('src', response.data.data[0].url);
+    image.attr('src', response.data.data[0].images.original.url);
     $('.gif-gallery').append(image);
 
 
-    return response.data.data[0];
+    return response.data.data[0].images.original.url;
 }
 
 // function appendToGallery(gif) {
